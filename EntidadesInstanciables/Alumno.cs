@@ -22,9 +22,9 @@ namespace EntidadesInstanciables
         protected override string ParticiparEnClase()
         { }
 
-        public bool operator != (Alumno a, EClase clase)
+        public bool operator != (Alumno a, EClases clase)
         { }
-        public bool operator ==(Alumno a, EClase clase)
+        public bool operator ==(Alumno a, EClases clase)
         { }
 
         public string ToString()

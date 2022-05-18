@@ -6,14 +6,24 @@ using System.Threading.Tasks;
 
 namespace EntidadesAbstractas
 {
-    abstract class Persona
+    public abstract class Persona
     {
         private string _apellido;
         private int _dni;
         private ENacionalidad _nacionalidad;
         private string _nombre;
 
-        public string Apellido { get; set; }
+        public string Apellido 
+        {
+            get
+            {
+                return _apellido;
+            }
+            set
+            {
+                _apellido = ValidarNombreApellido(_apellido);
+            }
+        }
         public int DNI 
         {
             get 
@@ -26,7 +36,17 @@ namespace EntidadesAbstractas
             } 
         }
         public ENacionalidad Nacionalidad { get; set; }
-        public string Nombre { get; set; }
+        public string Nombre
+        {
+            get
+            {
+                return _nombre;
+            }
+            set
+            {
+                _nombre = ValidarNombreApellido(_nombre);
+            }
+        }
         public string StringToDNI { get; set; }
 
         public Persona (string nombre, string apellido, ENacionalidad nacionalidad)
@@ -37,15 +57,25 @@ namespace EntidadesAbstractas
         { }
 
         public override string ToString()
-        { }
+        {
+            return Nacionalidad.ToString()+Nombre+DNI.ToString()+Apellido;
+        }
         private int ValidarDni (ENacionalidad nacionalidad, int dato)
         {
             //validar dni correcto, argentino entre 1 y 89999999, sino lanzar excepcion dniinvalidoexception
             return 5;
         }
-        private int ValidarDNni(ENacionalidad nacionalidad, string dato)
-        { }
+        private int ValidarDni(ENacionalidad nacionalidad, string dato)
+        {
+            //validar dni correcto, argentino entre 1 y 89999999, sino lanzar excepcion dniinvalidoexception
+            return 5;
+        }
         private string ValidarNombreApellido (string dato)
+        {
+            //validara que sean carateres validos opara nombe y apellido
+            return "a";
+        }
+        public Persona()
         { }
     }
 }
