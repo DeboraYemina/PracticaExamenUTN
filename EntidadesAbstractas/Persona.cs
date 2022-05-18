@@ -28,6 +28,11 @@ namespace EntidadesAbstractas
 
         public override string ToString()
         { }
-
+        private int ValidarDNni (ENacionalidad nacionalidad, int dato)
+        { }
+        private int ValidarDNni(ENacionalidad nacionalidad, string dato)
+        { }
+        private string ValidarNombreApellido (string dato)
+        { }
     }
 }

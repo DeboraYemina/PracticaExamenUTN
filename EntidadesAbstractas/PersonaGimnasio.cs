@@ -6,7 +6,27 @@ using System.Threading.Tasks;
 
 namespace EntidadesAbstractas
 {
-    internal class PersonaGimnasio
+    public abstract class PersonaGimnasio:Persona
     {
+        int _identificador;
+
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
+        protected string MostrarDatos()
+        { 
+        }
+
+        public static bool operator != (PersonaGimnasio pg1, PersonaGimnasio pg2)
+        { }
+        public static bool operator == (PersonaGimnasio pg1, PersonaGimnasio pg2)
+        { }
+
+        protected abstract string ParticiparEnClase()
+        { }
+
+        public PersonaGimnasio(int id, string nombre, string apellido, string dni, ENacionalidad nacionalidad) 
+        { }
     }
 }
