@@ -9,6 +9,14 @@ namespace EntidadesInstanciables
 {
     internal class Gimnasio
     {
+        public enum EClases
+        {
+            CrossFit,
+            Natacion,
+            Pilates,
+            Yoga
+        }
+
         private List<Alumno> _alumnos; //inscriptos
         private List<Instructor> _instructores; //quienes dan clases
         private List<Jornada> _jornada; //se accede a una jornada especifica por medio de indexador

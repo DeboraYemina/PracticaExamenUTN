@@ -8,6 +8,12 @@ namespace EntidadesAbstractas
 {
     public abstract class Persona
     {
+        public enum ENacionalidad
+        {
+            Argentino,
+            Extranjero
+        }
+
         private string _apellido;
         private int _dni;
         private ENacionalidad _nacionalidad;

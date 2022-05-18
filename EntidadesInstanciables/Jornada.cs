@@ -7,7 +7,7 @@ using EntidadesAbstractas;
 
 namespace EntidadesInstanciables
 {
-    internal class Jornada
+    public class Jornada
     {
         private List<Alumno> _alumnos;
         private EClases _clase;

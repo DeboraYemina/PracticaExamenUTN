@@ -9,12 +9,19 @@ namespace EntidadesInstanciables
 {
     internal sealed class Alumno:PersonaGimnasio
     {
-        public EClases _claseQueToma;
+        public enum EEstadoCuenta
+        {
+            Deudor,
+            MesPrueba,
+            AlDia
+        }
+
+        public Gimnasio.EClases _claseQueToma;
         EEstadoCuenta _estadoCuenta;
 
-        public Alumno(int id, string nombre, string apellido, string dni, ENacionalidad nacionalidad, EClases claseQueToma)
+        public Alumno(int id, string nombre, string apellido, string dni, ENacionalidad nacionalidad, Gimnasio.EClases claseQueToma)
         { }
-        public Alumno(int id, string nombre, string apellido, string dni, ENacionalidad nacionalidad, EClases claseQueToma, EEstadoCuenta estadoCuenta)
+        public Alumno(int id, string nombre, string apellido, string dni, ENacionalidad nacionalidad, Gimnasio.EClases claseQueToma, EEstadoCuenta estadoCuenta)
         { }
         protected override string MostrarDatos()
         {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Excepciones
 {
-    internal class NacionalidadInvalidaException:Exception
+    public class NacionalidadInvalidaException:Exception
     {
         public NacionalidadInvalidaException()
         { }
