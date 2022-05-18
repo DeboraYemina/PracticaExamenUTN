@@ -32,7 +32,7 @@ namespace EntidadesAbstractas
             }
             set 
             { 
-                _dni = ValidarDNni(_nacionalidad, _dni); 
+                _dni = ValidarDni(_nacionalidad, _dni); 
             } 
         }
         public ENacionalidad Nacionalidad { get; set; }

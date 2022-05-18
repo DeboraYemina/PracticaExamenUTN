@@ -6,11 +6,16 @@ using System.Threading.Tasks;
 
 namespace Archivos
 {
-    internal class Texto
+    internal class Texto:IArchivo
     {
         public bool guardar(string archivo, string datos)
-        { }
+        {
+            return true;
+        }
         public bool leer(string archivo, out string datos)
-        { }
+        {
+            return true;
+        }
     }
+
 }

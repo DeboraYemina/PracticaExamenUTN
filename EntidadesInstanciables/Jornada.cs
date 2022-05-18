@@ -48,11 +48,6 @@ namespace EntidadesInstanciables
             //agrega un alumno a la clase validadnod anets que no este ya cargado
             return j;
         }
-        public static Jornada operator -(Jornada j, Alumno a)
-        {
-            //elimina un alumno a la clase validadnod anets que no este ya cargado
-            return j;
-        }
         public override string ToString()
         {
             return _instructor.ToString() + _clase.ToString() + _alumnos.ToString();
