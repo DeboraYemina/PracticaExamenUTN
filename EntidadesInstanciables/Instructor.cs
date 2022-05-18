@@ -10,24 +10,41 @@ namespace EntidadesInstanciables
     sealed class Instructor : PersonaGimnasio
     {
         Queue<EClases> _clasesDelDia;
-        Random _random;
+        static Random _random;
 
         private void _randomClases()
-        { }
+        {
+            //guardar dos clases al azar en clasesdeldia
+        }
         private Instructor()
-        { }
+        {
+            //inicializar random
+            //inicializar _clasesdeldia, asignar dos clases al azar con _randomclases
+        }
         public Instructor(int id, string nombre, string apellido, string dni, ENacionalidad nacionalidad)
         { }
-        protected string MostrarDatos()
-        { }
-        public bool operator ==(Instructor i,  EClase clase)
-        { }
-        public bool operator !=(Instructor i, EClase clase)
-        { }
-        protected string ParticiparEnClase()
-        { }
-        public string ToString()
-        { 
+        protected override string MostrarDatos()
+        {
+            //retornara una cadena con los datos del alumno
+            return "a";
+        }
+        public static bool operator ==(Instructor i,  EClase clase)
+        {
+            if (i._clasesDelDia==clase)
+                return true;
+            return false;
+        }
+        public static bool operator !=(Instructor i, EClase clase)
+        {
+            return !(i == clase);
+        }
+        public override string ToString()
+        {
+            return _clasesDelDia.ToString();
+        }
+        protected override string ParticiparEnClase()
+        {
+            return "Clase del día" + _clasesDelDia;
         }
     }
 }

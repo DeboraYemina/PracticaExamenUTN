@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EntidadesAbstractas;
 
 namespace EntidadesInstanciables
 {
@@ -13,21 +14,48 @@ namespace EntidadesInstanciables
         private Instructor _instructor;
         //prop que no entiendo this [int i] {get;} : Jornada
 
-        public bool Guardar (Jornada jornada)
-        { }
+        public static bool Guardar (Jornada jornada)
+        {
+            //guarda la jornada en un txt
+            return true;
+        }
+        public static bool Leer(Jornada jornada)
+        {
+            //lee la jornada de un txt
+            return true;
+        }
         private Jornada()
-        { }
+        {
+            _alumnos = new List<Alumno>();
+        }
         public Jornada(EClases clase, Instructor instructor)
         { }
         public static bool operator !=(Jornada j, Alumno a)
-        { }
+        {
+            return !(j==a);
+        }
         public static bool operator ==(Jornada j, Alumno a)
-        { }
+        {
+            foreach (Alumno aux in j._alumnos)
+            {
+                if (aux == a)
+                    return true;
+            }
+            return false;
+        }
         public static Jornada operator +(Jornada j, Alumno a)
-        { }
+        {
+            //agrega un alumno a la clase validadnod anets que no este ya cargado
+            return j;
+        }
         public static Jornada operator -(Jornada j, Alumno a)
-        { }
-        public string ToString()
-        { }
+        {
+            //elimina un alumno a la clase validadnod anets que no este ya cargado
+            return j;
+        }
+        public override string ToString()
+        {
+            return _instructor.ToString() + _clase.ToString() + _alumnos.ToString();
+        }
     }
 }

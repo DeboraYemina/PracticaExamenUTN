@@ -39,7 +39,7 @@ namespace EntidadesAbstractas
         {
             //cargar los datos y llamar a constructor base
         }
-        private PersonaGimnasio()
+        public PersonaGimnasio()
         { }
     }
 }

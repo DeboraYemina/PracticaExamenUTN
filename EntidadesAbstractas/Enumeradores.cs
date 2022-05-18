@@ -24,5 +24,6 @@ namespace EntidadesAbstractas
 
     public enum EEstadoCuenta 
     { 
+        Deudor
     }
 }

@@ -9,25 +9,39 @@ namespace EntidadesInstanciables
 {
     internal sealed class Alumno:PersonaGimnasio
     {
-        EClases _claseQueToma;
+        public EClases _claseQueToma;
         EEstadoCuenta _estadoCuenta;
 
         public Alumno(int id, string nombre, string apellido, string dni, ENacionalidad nacionalidad, EClases claseQueToma)
         { }
         public Alumno(int id, string nombre, string apellido, string dni, ENacionalidad nacionalidad, EClases claseQueToma, EEstadoCuenta estadoCuenta)
         { }
-        protected string MostrarDatos()
-        { }
+        protected override string MostrarDatos()
+        {
+            return _claseQueToma.ToString() + _estadoCuenta.ToString();
+        }
 
         protected override string ParticiparEnClase()
-        { }
+        {
+            return "Toma clase de " + _claseQueToma;
+        }
 
-        public bool operator != (Alumno a, EClases clase)
-        { }
-        public bool operator ==(Alumno a, EClases clase)
-        { }
+        public static bool operator != (Alumno a, EClases clase)
+        {
+            if (a._claseQueToma != clase)
+                return true;
+            return false;
+        }
+        public static bool operator ==(Alumno a, EClases clase)
+        {
+            if (a._estadoCuenta != EEstadoCuenta.Deudor && a._claseQueToma == clase)
+                return true;
+            return false;
+        }
 
-        public string ToString()
-        { }
+        public override string ToString()
+        {
+            return MostrarDatos();
+        }
     }
 }
