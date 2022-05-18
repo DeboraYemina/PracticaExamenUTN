@@ -8,5 +8,9 @@ namespace Archivos
 {
     internal class Texto
     {
+        public bool guardar(string archivo, string datos)
+        { }
+        public bool leer(string archivo, out string datos)
+        { }
     }
 }

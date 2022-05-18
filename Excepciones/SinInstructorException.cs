@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Excepciones
 {
-    internal class SinInstructorException
+    internal class SinInstructorException:Exception
     {
+        public SinInstructorException()
+        { }
     }
 }

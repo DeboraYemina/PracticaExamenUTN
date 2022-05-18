@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Archivos
 {
-    internal class Xml
+    internal class Xml<T>
     {
+        public bool guardar(string archivo, T datos)
+        { }
+        public bool leer(string archivo, out T datos)
+        { }
     }
 }

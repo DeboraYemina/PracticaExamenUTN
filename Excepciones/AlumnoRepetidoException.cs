@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Excepciones
 {
-    internal class AlumnoRepetidoException
+    internal class AlumnoRepetidoException:Exception
     {
+        public AlumnoRepetidoException()
+        { }
     }
 }
