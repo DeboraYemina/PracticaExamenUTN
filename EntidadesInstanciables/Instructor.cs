@@ -14,10 +14,15 @@ namespace EntidadesInstanciables
 
         private void _randomClases()
         {
+            _clasesDelDia.Enqueue((Gimnasio.EClases)_random.Next(Enum.GetNames(typeof(Gimnasio.EClases)).Length));
+            _clasesDelDia.Enqueue((Gimnasio.EClases)_random.Next(Enum.GetNames(typeof(Gimnasio.EClases)).Length));
             //guardar dos clases al azar en clasesdeldia
         }
         private Instructor()
         {
+            _clasesDelDia=new Queue<Gimnasio.EClases>();
+            _random = new Random();
+            _randomClases();
             //inicializar random
             //inicializar _clasesdeldia, asignar dos clases al azar con _randomclases
         }
