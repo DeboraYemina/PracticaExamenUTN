@@ -12,6 +12,14 @@ namespace EntidadesInstanciables
         private List<Alumno> _alumnos;
         private Gimnasio.EClases _clase;
         private Instructor _instructor;
+
+        public Jornada this[int i] 
+        { 
+            get
+            {
+                return new Jornada();
+            }
+        }
         //prop que no entiendo this [int i] {get;} : Jornada
 
         public static bool Guardar (Jornada jornada)

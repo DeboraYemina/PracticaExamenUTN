@@ -26,17 +26,20 @@ namespace EntidadesInstanciables
             //inicializar random
             //inicializar _clasesdeldia, asignar dos clases al azar con _randomclases
         }
-        public Instructor(int id, string nombre, string apellido, string dni, ENacionalidad nacionalidad)
+        public Instructor(int id, string nombre, string apellido, string dni, ENacionalidad nacionalidad):base(id,nombre,apellido,dni,nacionalidad)
         { }
         protected override string MostrarDatos()
         {
             //retornara una cadena con los datos del alumno
-            return "a";
+            return base.MostrarDatos();
         }
         public static bool operator ==(Instructor i, Gimnasio.EClases clase)
         {
-            if (i._clasesDelDia==clase)
-                return true;
+            foreach (Gimnasio.EClases aux in i._clasesDelDia)
+            {
+                if (aux == clase)
+                    return true;
+            }
             return false;
         }
         public static bool operator !=(Instructor i, Gimnasio.EClases clase)
@@ -49,7 +52,13 @@ namespace EntidadesInstanciables
         }
         protected override string ParticiparEnClase()
         {
-            return "Clase del día" + _clasesDelDia;
+            string a="";
+
+            foreach (Gimnasio.EClases aux in _clasesDelDia)
+            {
+                a += aux.ToString();
+            }
+            return "Clases del día: " + a;
         }
     }
 }
