@@ -7,7 +7,7 @@ using EntidadesAbstractas;
 
 namespace EntidadesInstanciables
 {
-    internal class Gimnasio
+    public class Gimnasio
     {
         public enum EClases
         {

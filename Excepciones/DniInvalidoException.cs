@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Excepciones
 {
-    internal class DniInvalidoException:Exception
+    public class DniInvalidoException:Exception
     {
         private string mensajeBase;
 

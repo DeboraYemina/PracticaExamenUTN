@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Excepciones;
+using System.Text.RegularExpressions;
 
 namespace EntidadesAbstractas
 {
@@ -27,7 +29,7 @@ namespace EntidadesAbstractas
             }
             set
             {
-                _apellido = ValidarNombreApellido(_apellido);
+                _apellido = ValidarNombreApellido(value);
             }
         }
         public int DNI 
@@ -38,7 +40,7 @@ namespace EntidadesAbstractas
             }
             set 
             { 
-                _dni = ValidarDni(_nacionalidad, _dni); 
+                _dni = ValidarDni(Nacionalidad, value); 
             } 
         }
         public ENacionalidad Nacionalidad { get; set; }
@@ -50,17 +52,35 @@ namespace EntidadesAbstractas
             }
             set
             {
-                _nombre = ValidarNombreApellido(_nombre);
+                _nombre = ValidarNombreApellido(value);
             }
         }
-        public string StringToDNI { get; set; }
+        public string StringToDNI 
+        {
+            get
+            {
+                return _dni.ToString();
+            }
+            set
+            {
+                _dni = ValidarDni(Nacionalidad, value);
+            }
+        }
 
         public Persona (string nombre, string apellido, ENacionalidad nacionalidad)
-        { }
-        public Persona(string nombre, string apellido, int dni, ENacionalidad nacionalidad)
-        { }
-        public Persona(string nombre, string apellido, string dni, ENacionalidad nacionalidad)
-        { }
+        {
+            Nombre = nombre;
+            Apellido = apellido;
+            Nacionalidad = nacionalidad;
+        }
+        public Persona(string nombre, string apellido, int dni, ENacionalidad nacionalidad):this(nombre, apellido, nacionalidad)
+        {
+            DNI = dni;
+        }
+        public Persona(string nombre, string apellido, string dni, ENacionalidad nacionalidad) : this(nombre, apellido, nacionalidad)
+        {
+            StringToDNI = dni;
+        }
 
         public override string ToString()
         {
@@ -69,17 +89,36 @@ namespace EntidadesAbstractas
         private int ValidarDni (ENacionalidad nacionalidad, int dato)
         {
             //validar dni correcto, argentino entre 1 y 89999999, sino lanzar excepcion dniinvalidoexception
-            return 5;
+            if (1<dato && 89999999 > dato && nacionalidad == Persona.ENacionalidad.Argentino)
+            {
+                return dato;
+            }
+            else if (nacionalidad == Persona.ENacionalidad.Extranjero && dato > 89999999)
+            {
+                return dato;
+            }
+            else
+                throw new DniInvalidoException();
         }
         private int ValidarDni(ENacionalidad nacionalidad, string dato)
         {
-            //validar dni correcto, argentino entre 1 y 89999999, sino lanzar excepcion dniinvalidoexception
-            return 5;
+            try
+            {
+                int.Parse(dato);
+            }
+            catch (DniInvalidoException e)
+            { 
+                Console.WriteLine(e.Message);
+            }
+            return ValidarDni(nacionalidad, int.Parse(dato));
         }
         private string ValidarNombreApellido (string dato)
         {
-            //validara que sean carateres validos opara nombe y apellido
-            return "a";
+            if (!Regex.IsMatch(dato, "^[A-Z][a-zA-Z]*$"))
+            {
+                Console.WriteLine("el nombre solo debe contener letras");
+            }
+            return dato;
         }
         public Persona()
         { }

@@ -10,7 +10,7 @@ namespace EntidadesInstanciables
     public class Jornada
     {
         private List<Alumno> _alumnos;
-        private EClases _clase;
+        private Gimnasio.EClases _clase;
         private Instructor _instructor;
         //prop que no entiendo this [int i] {get;} : Jornada
 
@@ -28,7 +28,7 @@ namespace EntidadesInstanciables
         {
             _alumnos = new List<Alumno>();
         }
-        public Jornada(EClases clase, Instructor instructor)
+        public Jornada (Gimnasio.EClases clase, Instructor instructor)
         { }
         public static bool operator !=(Jornada j, Alumno a)
         {

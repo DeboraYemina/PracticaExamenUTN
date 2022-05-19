@@ -7,9 +7,9 @@ using EntidadesAbstractas;
 
 namespace EntidadesInstanciables
 {
-    sealed class Instructor : PersonaGimnasio
+    public sealed class Instructor : PersonaGimnasio
     {
-        Queue<EClases> _clasesDelDia;
+        Queue<Gimnasio.EClases> _clasesDelDia;
         static Random _random;
 
         private void _randomClases()
@@ -28,13 +28,13 @@ namespace EntidadesInstanciables
             //retornara una cadena con los datos del alumno
             return "a";
         }
-        public static bool operator ==(Instructor i,  EClases clase)
+        public static bool operator ==(Instructor i, Gimnasio.EClases clase)
         {
             if (i._clasesDelDia==clase)
                 return true;
             return false;
         }
-        public static bool operator !=(Instructor i, EClases clase)
+        public static bool operator !=(Instructor i, Gimnasio.EClases clase)
         {
             return !(i == clase);
         }

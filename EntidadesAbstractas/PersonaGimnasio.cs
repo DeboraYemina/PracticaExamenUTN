@@ -16,7 +16,7 @@ namespace EntidadesAbstractas
         }
         protected virtual string MostrarDatos()
         {
-            return _identificador.ToString();
+            return _identificador.ToString()+Apellido+Nombre+StringToDNI+Nacionalidad.ToString();
         }
 
         public static bool operator != (PersonaGimnasio pg1, PersonaGimnasio pg2)
@@ -26,7 +26,11 @@ namespace EntidadesAbstractas
         public static bool operator == (PersonaGimnasio pg1, PersonaGimnasio pg2)
         {
             //ver que sean del mismo tipo
-            if (pg1.DNI==pg2.DNI || pg1._identificador==pg2._identificador)
+            if (pg1.DNI==pg2.DNI && pg1.GetType()==pg2.GetType())
+            {
+                return true;
+            }
+            if (pg1._identificador == pg2._identificador && pg1.GetType() == pg2.GetType())
             {
                 return true;
             }
@@ -35,9 +39,9 @@ namespace EntidadesAbstractas
 
         protected abstract string ParticiparEnClase();
 
-        public PersonaGimnasio(int id, string nombre, string apellido, string dni, ENacionalidad nacionalidad) 
+        public PersonaGimnasio(int id, string nombre, string apellido, string dni, ENacionalidad nacionalidad):base(nombre,apellido,dni,nacionalidad) 
         {
-            //cargar los datos y llamar a constructor base
+            _identificador = id;
         }
         public PersonaGimnasio()
         { }
