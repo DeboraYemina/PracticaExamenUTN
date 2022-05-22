@@ -86,19 +86,25 @@ namespace EntidadesAbstractas
         {
             return Nacionalidad.ToString()+Nombre+DNI.ToString()+Apellido;
         }
-        private int ValidarDni (ENacionalidad nacionalidad, int dato)
+        private int ValidarDni(ENacionalidad nacionalidad, int dato)
         {
+            try
+            {
+                if (1<dato && 89999999 > dato && nacionalidad == Persona.ENacionalidad.Argentino)
+                {
+                    return dato;
+                }
+                else if (nacionalidad == Persona.ENacionalidad.Extranjero && dato > 89999999)
+                {
+                    return dato;
+                }
+            }
+            catch (DniInvalidoException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return dato;
             //validar dni correcto, argentino entre 1 y 89999999, sino lanzar excepcion dniinvalidoexception
-            if (1<dato && 89999999 > dato && nacionalidad == Persona.ENacionalidad.Argentino)
-            {
-                return dato;
-            }
-            else if (nacionalidad == Persona.ENacionalidad.Extranjero && dato > 89999999)
-            {
-                return dato;
-            }
-            else
-                throw new DniInvalidoException();
         }
         private int ValidarDni(ENacionalidad nacionalidad, string dato)
         {

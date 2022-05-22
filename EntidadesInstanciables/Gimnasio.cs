@@ -21,8 +21,19 @@ namespace EntidadesInstanciables
         private List<Instructor> _instructores; //quienes dan clases
         private List<Jornada> _jornada = new List<Jornada>(); //se accede a una jornada especifica por medio de indexador
 
+        public Jornada this[int i]
+        {
+            get
+            {
+                return _jornada[i];
+            }
+        }
+
         public Gimnasio()
-        { }
+        { 
+            _alumnos = new List<Alumno>(); 
+            _instructores = new List<Instructor>();
+        }
         public static bool Leer()
         {
             //retorna la clase gim guardada en guardar()
@@ -57,6 +68,12 @@ namespace EntidadesInstanciables
         public static Gimnasio operator +(Gimnasio g, Alumno a)
         {
             //se agrega el alumno validando que no exista ya
+            foreach (Alumno aux in g._alumnos)
+            {
+                if(aux.DNI==a.DNI)
+                    break;
+            }
+            g._alumnos.Add(a);
             return g;
         }
         public static Gimnasio operator +(Gimnasio g, EClases clase)

@@ -99,6 +99,7 @@ namespace EntidadesInstanciables
             try
             {
                 int jornada = 0;
+
                 Jornada.Guardar(gim[jornada]);
                 Console.WriteLine("Archivo de Jornada {0} guardado", jornada);
             }

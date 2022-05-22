@@ -17,7 +17,7 @@ namespace EntidadesInstanciables
         { 
             get
             {
-                return new Jornada();
+                return this[i];
             }
         }
         //prop que no entiendo this [int i] {get;} : Jornada
