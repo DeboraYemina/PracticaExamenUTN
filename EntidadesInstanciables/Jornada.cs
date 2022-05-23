@@ -36,8 +36,11 @@ namespace EntidadesInstanciables
         {
             _alumnos = new List<Alumno>();
         }
-        public Jornada (Gimnasio.EClases clase, Instructor instructor)
-        { }
+        public Jornada (Gimnasio.EClases clase, Instructor instructor):this()
+        {
+            _clase = clase;
+            _instructor = instructor;
+        }
         public static bool operator !=(Jornada j, Alumno a)
         {
             return !(j==a);
@@ -46,7 +49,7 @@ namespace EntidadesInstanciables
         {
             foreach (Alumno aux in j._alumnos)
             {
-                if (aux == a)
+                if ((PersonaGimnasio)aux == (PersonaGimnasio)a)
                     return true;
             }
             return false;

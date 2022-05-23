@@ -9,7 +9,7 @@ namespace EntidadesInstanciables
 {
     public sealed class Instructor : PersonaGimnasio
     {
-        Queue<Gimnasio.EClases> _clasesDelDia;
+        private Queue<Gimnasio.EClases> _clasesDelDia;
         static Random _random;
 
         private void _randomClases()
@@ -48,7 +48,7 @@ namespace EntidadesInstanciables
         }
         public override string ToString()
         {
-            return _clasesDelDia.ToString();
+            return base.MostrarDatos()+_clasesDelDia.ToString();
         }
         protected override string ParticiparEnClase()
         {

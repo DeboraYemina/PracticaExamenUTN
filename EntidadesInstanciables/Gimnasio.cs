@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EntidadesAbstractas;
+using Excepciones;
 
 namespace EntidadesInstanciables
 {
@@ -58,8 +59,12 @@ namespace EntidadesInstanciables
         }
         public static Instructor operator !=(Gimnasio g, EClases clase)
         {
-            //retorna el primer instructor que no puee dar la clase
-            return g._instructores[3];
+            foreach (Instructor aux in g._instructores)
+            {
+                if (aux != clase)
+                    return aux;
+            }
+            throw new SinInstructorException();
         }
         public static bool operator !=(Gimnasio g, Instructor i)
         {
@@ -70,37 +75,59 @@ namespace EntidadesInstanciables
             //se agrega el alumno validando que no exista ya
             foreach (Alumno aux in g._alumnos)
             {
-                if(aux.DNI==a.DNI)
-                    break;
+                if((PersonaGimnasio)aux==(PersonaGimnasio)a)
+                    return g;
             }
             g._alumnos.Add(a);
             return g;
         }
         public static Gimnasio operator +(Gimnasio g, EClases clase)
         {
-            //se debe generar y agregar una nueva jornada indicando clase, isntructor (seghun atributo clasedeldia) 
+            g._jornada.Add(new Jornada(clase, g==clase));
+            //se debe generar y agregar una nueva jornada indicando clase, isntructor (segun atributo clasedeldia) 
             //y la lioista de alumnos (segun coincidan cion clases que toma)
             return g;
         }
         public static Gimnasio operator +(Gimnasio g, Instructor i)
         {
+            foreach (Instructor aux in g._instructores)
+            {
+                if ((PersonaGimnasio)aux == (PersonaGimnasio)i)
+                    break;
+            }
             //se agrega el instructor validando que no exista ya
+            g._instructores.Add(i);
             return g;
         }
         public static bool operator ==(Gimnasio g, Alumno a)
         {
+            foreach (Alumno aux in g._alumnos)
+            {
+                if ((PersonaGimnasio)aux == (PersonaGimnasio)a)
+                    return true;
+            }
             //son iuales si el alumno esta inscripto en el
-            return true;
+            return false;
         }
         public static Instructor operator ==(Gimnasio g, EClases clase)
         {
+            foreach (Instructor aux in g._instructores)
+            {
+                if (aux == clase)
+                    return aux;
+            }
             //retorna el primer instructor capaz de dar la clase, sino lanza sininstructorexception
-            return g._instructores[1];
+            throw new SinInstructorException();
         }
         public static bool operator ==(Gimnasio g, Instructor i)
         {
+            foreach (Instructor aux in g._instructores)
+            {
+                if ((PersonaGimnasio)aux == (PersonaGimnasio)i)
+                    return true;
+            }
             //si el instructor da clases en el gim
-            return true;
+            return false;
         }
     }
 }
