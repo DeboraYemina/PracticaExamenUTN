@@ -16,7 +16,10 @@ namespace EntidadesAbstractas
         }
         protected virtual string MostrarDatos()
         {
-            return _identificador.ToString()+Apellido+Nombre+StringToDNI+Nacionalidad.ToString();
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(base.ToString());
+            sb.AppendLine("CARNET NÚmero: "+_identificador);
+            return sb.ToString();
         }
 
         public static bool operator != (PersonaGimnasio pg1, PersonaGimnasio pg2)

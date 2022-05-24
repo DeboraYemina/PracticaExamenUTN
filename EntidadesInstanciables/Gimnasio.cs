@@ -47,7 +47,10 @@ namespace EntidadesInstanciables
         }
         private static string MostrarDatos(Gimnasio gim)
         {
-            return "a;";
+            string a = "";
+            foreach (Jornada aux in gim._jornada)
+                a+=aux.ToString();
+            return a;
         }
         public override string ToString()
         {
@@ -75,15 +78,19 @@ namespace EntidadesInstanciables
             //se agrega el alumno validando que no exista ya
             foreach (Alumno aux in g._alumnos)
             {
-                if((PersonaGimnasio)aux==(PersonaGimnasio)a)
-                    return g;
+                if ((PersonaGimnasio)aux == (PersonaGimnasio)a)
+                    throw new AlumnoRepetidoException();
             }
             g._alumnos.Add(a);
             return g;
         }
         public static Gimnasio operator +(Gimnasio g, EClases clase)
         {
-            g._jornada.Add(new Jornada(clase, g==clase));
+            Jornada j = new Jornada(clase, g == clase);
+            foreach (Alumno aux in g._alumnos)
+                if(aux._claseQueToma==clase)
+                    j += aux;
+            g._jornada.Add(j);
             //se debe generar y agregar una nueva jornada indicando clase, isntructor (segun atributo clasedeldia) 
             //y la lioista de alumnos (segun coincidan cion clases que toma)
             return g;

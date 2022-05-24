@@ -56,12 +56,30 @@ namespace EntidadesInstanciables
         }
         public static Jornada operator +(Jornada j, Alumno a)
         {
+            if(j._alumnos.Count==0)
+                j._alumnos.Add(a);
+            foreach (Alumno aux in j._alumnos)
+            {
+                if ((PersonaGimnasio)aux == (PersonaGimnasio)a)
+                    return j;
+            }
+            j._alumnos.Add(a);
             //agrega un alumno a la clase validadnod anets que no este ya cargado
             return j;
         }
         public override string ToString()
         {
-            return _instructor.ToString() + _clase.ToString() + _alumnos.ToString();
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("JORNADA: ");
+            sb.AppendLine("CLASE DE "+_clase.ToString()+" POR "+_instructor.ToString());
+            sb.AppendLine();
+            sb.AppendLine("ALUMNOS:");
+            foreach (Alumno aux in _alumnos)
+            {
+                sb.AppendLine(aux.ToString());
+            }
+            sb.AppendLine("<----------------------------------------------------------------------------------->");
+            return sb.ToString();
         }
     }
 }

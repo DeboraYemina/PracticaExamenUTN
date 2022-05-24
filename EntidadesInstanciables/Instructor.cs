@@ -20,18 +20,27 @@ namespace EntidadesInstanciables
         }
         private Instructor()
         {
+        }
+        public Instructor(int id, string nombre, string apellido, string dni, ENacionalidad nacionalidad) : base(id, nombre, apellido, dni, nacionalidad)
+        {
             _clasesDelDia=new Queue<Gimnasio.EClases>();
             _random = new Random();
             _randomClases();
             //inicializar random
             //inicializar _clasesdeldia, asignar dos clases al azar con _randomclases
         }
-        public Instructor(int id, string nombre, string apellido, string dni, ENacionalidad nacionalidad):base(id,nombre,apellido,dni,nacionalidad)
-        { }
         protected override string MostrarDatos()
         {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(base.MostrarDatos());
+            sb.AppendLine("CLASES DEL DIA:");
+            foreach (Gimnasio.EClases aux in _clasesDelDia)
+            {
+                sb.AppendLine(aux.ToString());
+            }
+            return sb.ToString();
             //retornara una cadena con los datos del alumno
-            return base.MostrarDatos();
+            
         }
         public static bool operator ==(Instructor i, Gimnasio.EClases clase)
         {
@@ -48,7 +57,7 @@ namespace EntidadesInstanciables
         }
         public override string ToString()
         {
-            return base.MostrarDatos()+_clasesDelDia.ToString();
+            return MostrarDatos();
         }
         protected override string ParticiparEnClase()
         {
